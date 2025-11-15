@@ -15,9 +15,9 @@
         "groups": [
           {
             "group": "API Reference 1",
-            "openapi": "dd.json",
+            "openapi": "https://supply-xml.booking.com/checkin-methods-api/v1/swagger.json",
             "pages": [
-              "POST /login",
+              "GET /checkin-methods",
               "POST /logout"
             ]
           },
