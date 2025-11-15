@@ -14,12 +14,21 @@
         "tab": "Guides",
         "groups": [
           {
+            "group": "API Reference",
+            "openapi": "dd.json",
+            "pages": [
+              "GET /users",
+              "POST /users"
+            ]
+          },
+          {
             "group": "Getting started",
             "pages": [
               "index",
               "quickstart",
               "development"
             ]
+            
           },
           {
             "group": "Customization",

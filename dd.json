@@ -1,0 +1,217 @@
+{
+"openapi": "3.0.0",
+"info": {
+"title": "CDO api",
+"description": "Olá ``` <script>alert('teste')</script>```",
+"version": "1.0"
+},
+"servers": [
+{
+"url": "http://localhost/api/v1",
+"description": "API Server"
+}
+],
+"paths": {
+"/login": {
+"post": {
+"tags": [
+"auth"
+],
+"summary": "/login",
+"description": "Get the JWT token to authorization",
+"operationId": "a728c719b447dd17ef668eaf0f1160b0",
+"requestBody": {
+"required": true,
+"content": {
+"application/json": {
+"schema": {
+"required": [
+"email",
+"password"
+],
+"properties": {
+"email": {
+"type": "string",
+"format": "email",
+"example": "user@test.com"
+},
+"password": {
+"type": "string",
+"example": ""
+}
+},
+"type": "object"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Return user logged with token",
+"content": {
+"application/json": {
+"schema": {
+"properties": {
+"user": {
+"type": "object",
+"anyOf": [
+{
+"$ref": "#/components/schemas/User"
+}
+]
+},
+"token": {
+"type": "string",
+"example": "eYkjj..."
+},
+"customer": {
+"type": "object",
+"anyOf": [
+{
+"$ref": "#/components/schemas/Customer"
+}
+]
+},
+"role": {
+"type": "string",
+"example": "member"
+}
+},
+"type": "object"
+}
+}
+}
+}
+},
+"security": []
+}
+},
+"/logout": {
+"post": {
+"tags": [
+"auth"
+],
+"summary": "/logout",
+"description": "Logout/destroy JWT token authorization",
+"operationId": "5695dcc8bc788c843097d2a20be77014",
+"responses": {
+"202": {
+"description": "Return empty"
+}
+}
+}
+}
+},
+"components": {
+"schemas": {
+"User": {
+"title": "User",
+"properties": {
+"id": {
+"type": "integer",
+"format": "int64",
+"example": "1"
+},
+"name": {
+"type": "string",
+"example": "Username"
+},
+"email": {
+"type": "string",
+"format": "email",
+"example": "user@test.com"
+},
+"email_verification_at": {
+"type": "string",
+"format": "date-time",
+"default": null
+},
+"avatar": {
+"type": "string",
+"format": "url",
+"example": "https://path.com/image.png"
+},
+"created_at": {
+"type": "string",
+"format": "date-time"
+},
+"updated_at": {
+"type": "string",
+"format": "date-time"
+},
+"deleted_at": {
+"type": "string",
+"format": "date-time",
+"default": null
+}
+},
+"type": "object"
+},
+"Customer": {
+"title": "Customer",
+"properties": {
+"id": {
+"type": "integer",
+"format": "int64",
+"example": "1"
+},
+"name": {
+"type": "string",
+"example": "Customer name"
+},
+"hash": {
+"type": "string",
+"example": "7d5279d98c7d5fd723ac226aee37b5a86"
+},
+"document": {
+"type": "string",
+"example": "00.000.000/0000-00"
+},
+"phone": {
+"type": "string",
+"example": "55 51 99999-9999"
+},
+"enabled": {
+"type": "tinyint",
+"default": 1
+},
+"created_at": {
+"type": "string",
+"format": "date-time"
+},
+"updated_at": {
+"type": "string",
+"format": "date-time"
+},
+"deleted_at": {
+"type": "string",
+"format": "date-time",
+"default": null
+}
+},
+"type": "object"
+}
+},
+"securitySchemes": {
+"bearerAuth": {
+"type": "http",
+"description": "API access via JWT",
+"name": "Authorization",
+"in": "header",
+"bearerFormat": "JWT",
+"scheme": "bearer"
+}
+}
+},
+"security": [
+{
+"bearerAuth": []
+}
+],
+"tags": [
+{
+"name": "auth",
+"description": "All methods for user authentication"
+}
+]
+}
