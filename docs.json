@@ -14,7 +14,7 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "API Reference",
+            "group": "API Reference 1",
             "openapi": "dd.json",
             "pages": [
               "GET /users",
