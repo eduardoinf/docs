@@ -17,8 +17,8 @@
             "group": "API Reference 1",
             "openapi": "dd.json",
             "pages": [
-              "GET /users",
-              "POST /users"
+              "POST /login",
+              "POST /logout"
             ]
           },
           {
